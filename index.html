@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="watermark-application">
+	<head>
+		<title>Water Marks!!</title>
+
+		<!-- CSS -->
+	    <!-- bootstrap -->
+	    <link href="dependencies/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- JS -->
+	    <!-- bootstrap and jquery-->
+	    <script src="dependencies/bootstrap/js/popper.min.js"></script>
+	    <script src="dependencies/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+	    <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- dependencies -->
+		<script src="dependencies/fabric.all.min.js"></script>
+		<script src="dependencies/FileSaver.min.js"></script>
+		<script src="dependencies/canvas-toBlob.js"></script>
+
+		<!-- angular dependencies -->
+    	<script src="dependencies/angular/angular.min.js"></script>
+    	<script src="dependencies/angular/angular-ui-router.js"></script>
+
+    	<!-- angular imports -->
+    	<script src="app/main.js"></script>
+    	<script src="app/main.routes.js"></script>
+
+    	<style type="text/css">
+    		#mainNav {
+		        padding: 5px;
+		        background-color: #BA3636;
+		        min-height: 5vh;
+		    }
+    	</style>
+
+	</head>
+	<body ng-controller="ApplyWaterMarkController" ng-init="init()" style="overflow: hidden;">
+		<nav id="mainNav">
+	        <div class="row">
+	            <div class="col no-padding">
+	                <ul class="nav">
+	                    <li class="nav-item">
+	                        <a class="nav-link active" style="color: white;
+	                        letter-spacing: 2pt; font-size: 16pt;">Water Marpp</a>
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	    </nav>
+	    <!-- TOP NAV -->
+
+		<div class="row no-gutters" style="width: 100%; height: 95vh;">
+			<div class="col col-lg-9 col-md-9 col-sm-12 col-xs-12" style="overflow: auto;">
+				<div align="center" style="padding: 24px; padding-bottom: 80px;">
+					<div style="margin-top: 50px;">
+						<canvas id="imageCanvas" width="350" height="370" style="border:1px solid black;"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 24px; background-color: #F4F4F4; overflow: hidden; display: flex; align-items: center;">
+				<form>
+					<div class="form-group">
+						<label>Import image</label>
+						<input class="form-control" type="file"
+			               id="loadImageInput"
+			               accept="image/x-png,image/gif,image/jpeg"/>
+					</div>
+					<br/>
+					<div ng-show="imageLoaded" class="form-group" align="center">
+						<button class="btn btn-primary" ng-click="addWaterMark()">Add Water mark</button>
+					</div>
+					<br/>
+					<div ng-show="textAdded" class="form-group">
+						<label>Text</label>
+						<input class="form-control" type="text" ng-model="waterMarkText" ng-change="changeWaterMarkText()"/>
+					</div>
+					<div ng-show="textAdded" class="form-group">
+						<label>Font</label>
+						<select class="form-control" ng-model="waterMarkFont" ng-change="changeWaterMarkFont()">
+				        	<option ng-repeat="fontFamily in fontFamilyOptions" ng-style="{'font-family': fontFamily}"
+				        		ng-value="fontFamily">{{fontFamily}}
+				        	</option>
+				        </select>
+					</div>
+					<div ng-show="textAdded" class="form-group">
+						<label>Colour</label>
+						<input class="form-control" type="color" ng-model="waterMarkColor" ng-change="changeWaterMarkColor()"/>
+					</div>
+					<br/><br/>
+					<div ng-show="textAdded" align="center" class="form-group">
+						<button class="form-control btn btn-success" ng-click="saveImage()">Save Work</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
