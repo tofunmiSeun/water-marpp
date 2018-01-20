@@ -3,9 +3,13 @@
 	<head>
 		<title>Water Marks!!</title>
 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<!-- CSS -->
 	    <!-- bootstrap -->
 	    <link href="dependencies/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	    <link href="index.css" rel="stylesheet">
 
 	    <!-- JS -->
 	    <!-- bootstrap and jquery-->
@@ -26,32 +30,18 @@
     	<script src="app/main.js"></script>
     	<script src="app/main.routes.js"></script>
 
-    	<style type="text/css">
-    		#mainNav {
-		        padding: 5px;
-		        background-color: #BA3636;
-		        min-height: 5vh;
-		    }
-    	</style>
-
 	</head>
-	<body ng-controller="ApplyWaterMarkController" ng-init="init()" style="overflow: hidden;">
-		<nav id="mainNav">
-	        <div class="row">
-	            <div class="col no-padding">
-	                <ul class="nav">
-	                    <li class="nav-item">
-	                        <a class="nav-link active" style="color: white;
-	                        letter-spacing: 2pt; font-size: 16pt;">Water Marpp</a>
-	                    </li>
-	                </ul>
-	            </div>
-	        </div>
-	    </nav>
+	<body ng-controller="ApplyWaterMarkController" ng-init="init()">
+		<div class="navi">
+			<div class="logo">
+				<a class="nav-link active info" style="color: white;
+	                letter-spacing: 2pt; font-size: 16pt;">Water Marpp</a>
+			</div>
+	    </div>
 	    <!-- TOP NAV -->
 
-		<div class="row no-gutters" style="width: 100%; height: 95vh;">
-			<div class="col col-lg-9 col-md-9 col-sm-12 col-xs-12" style="overflow: auto; display: grid; align-items: center;">
+		<div class="row no-gutters" style="width: 100%;">
+			<div class="main-view" style="overflow: auto; display: grid; align-items: center;">
 				<div align="center" style="padding: 24px; padding-bottom: 80px;">
 					<h3>Import photo here</h3>
 					<div style="margin-top: 50px;">
@@ -59,7 +49,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 24px; background-color: #F4F4F4; overflow: hidden; display: flex; align-items: center;">
+			<div class="side-bar" style="padding: 24px; background-color: #F4F4F4; overflow: hidden; display: flex; align-items: center;">
 				<form>
 					<div class="form-group">
 						<label>Import image</label>
